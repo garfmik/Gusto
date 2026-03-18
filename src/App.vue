@@ -1,6 +1,13 @@
 <template>
   <header>
     <nav>
+      <ul>
+        <li><router-link to="/">Главная</router-link></li>
+        <li><router-link to="/restaurants">Рестораны</router-link></li>
+        <li v-if="isAuthenticated">
+          <router-link to="/favourites">Избранное</router-link>
+        </li>
+      </ul>
       <div v-if="isAuthenticated && user">
         Welcome, {{ user.name }}
         <button @click="logout">Logout</button>
@@ -21,6 +28,7 @@
       </div>
     </nav>
   </header>
+  <router-view></router-view>
 </template>
 
 <script>

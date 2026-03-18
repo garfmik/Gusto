@@ -37,7 +37,7 @@ export const useAuthStore = defineStore('auth', {
             try {
                 const response = await axios.get(backendUrl +'/user',
                     { headers: {
-                        Authorization: `Bearer` + this.token
+                        Authorization: `Bearer ` + this.token
                     }});
                 this.user = response.data;
             } catch (error) {
