@@ -6,7 +6,7 @@
       </span>
     </template>
     <template #item="{ item, props, hasSubmenu, root }">
-      <a v-if="!item.auth || isAuthenticated" class="flex items-center ml-6 p-4">
+      <a v-if="!item.auth || isAuthenticated" class="flex items-center p-3">
         <router-link v-if="item.route" :to="item.route">
           <span :class="item.icon"/>
           <span class="ml-1">{{ item.label }}</span>
