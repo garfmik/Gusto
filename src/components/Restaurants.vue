@@ -12,8 +12,17 @@
     :first="offset"
   >
     <Column field="id" header="№" />
-    <Column field="name" header="Название ресторана" />
-
+    <Column field="name" header="Название ресторана"/>
+    <Column header="Изображение" style="width: 150px;">
+      <template #body="slotProps">
+          <img :src="slotProps.data.picture_url"/>
+      </template>
+    </Column>
+    <template #footer>
+      <div class="text-end">
+        <Button type="button" @click="this.$router.push('/createRestaurant')" icon="pi pi-plus" label="Добавить ресторан"/>
+      </div>
+    </template>
   </DataTable>
 </template>
 
@@ -21,10 +30,11 @@
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import {useDataStore} from '@/stores/dataStore.js'
+import Button from "primevue/button";
 
 export default {
   name: "Restaurants",
-  components: {DataTable, Column},
+  components: {DataTable, Column, Button},
   data(){
     return {
       dataStore: useDataStore(),
@@ -52,7 +62,7 @@ export default {
       this.perpage=event.rows;
       this.dataStore.get_restaurants(this.offset / this.perpage, this.perpage);
     }
-  }
+  },
 }
 </script>
 
