@@ -18,9 +18,9 @@ const routes = [
         component: Favourites,
     },
     {
-        path: '/createRestaurant',
+        path: '/createRestaurant/:id?',
         component: CreateRestaurant,
-    }
+    },
 ];
 const router = createRouter({
     history: createWebHistory(),
